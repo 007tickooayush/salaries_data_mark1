@@ -21,6 +21,7 @@ object HighestPayDefault {
       .option("header", value = true)
       .schema(Encoders.product[SalaryData].schema)
       .csv(SparkFiles.get("Salary_Dataset_with_Extra_Features.csv"))
+      .as[SalaryData]
       .cache()
 
 
