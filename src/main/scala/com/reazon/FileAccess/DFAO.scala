@@ -16,7 +16,11 @@ class DFAO {
   import spark.implicits._
 
 
-  def getFiles: Dataset[SalaryData] = {
+  def importSpark: (SparkSession, SparkContext, spark.implicits.type) ={
+    (spark,sc,spark.implicits)
+  }
+
+  def getSalary: Dataset[SalaryData] = {
     //    to suppress BlockManager Exceptions while execution
     Logger.getLogger("org").setLevel(Level.FATAL)
 

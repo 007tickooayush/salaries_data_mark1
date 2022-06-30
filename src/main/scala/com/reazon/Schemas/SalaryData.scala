@@ -2,7 +2,7 @@ package com.reazon.Schemas
 
 case class SalaryData(
                        rating: Double,
-                       company_name: String,
+                       companyName: String,
                        jobTitle: String,
                        salary: Int,
                        salariesReported: Int,
