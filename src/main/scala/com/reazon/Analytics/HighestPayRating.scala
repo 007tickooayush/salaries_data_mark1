@@ -33,6 +33,7 @@ object HighestPayRating {
 
     }.toDS()
       .as[SalaryData] //    need to convert it to proper DS SalaryData
+      .cache()
 
 
     ratingHighestPay.show()
