@@ -1,6 +1,7 @@
 package com.reazon.Analytics
 
 import com.reazon.FileAccess.DFAO
+import com.reazon.Schemas.SalaryData
 
 object HighestPayRating {
   def main(args: Array[String]): Unit = {
@@ -20,11 +21,19 @@ object HighestPayRating {
     //    getting highest salary of each rating
     val ratingHighestPay = ratingGroup.map { d =>
       val highestPay = d._2.sortBy(_.salary).reverse.head
-      (d._1,highestPay)
+
+      SalaryData(highestPay.rating,
+        highestPay.companyName,
+        highestPay.jobTitle,
+        highestPay.salary,
+        highestPay.salariesReported,
+        highestPay.location,
+        highestPay.employmentStatus,
+        highestPay.jobRoles)
+
     }.toDS()
-      .withColumnRenamed("_1","rating")
-      .withColumnRenamed("_2","salaryData")
-//    need to convert it to proper DS SalaryData
+      .as[SalaryData] //    need to convert it to proper DS SalaryData
+
 
     ratingHighestPay.show()
 
